@@ -9,7 +9,7 @@ print("Nice to meet you " + firstname[0].upper() + "." + lastname[0].upper())
 # 3. kullanıcının ismindeki sesli harf sayısını yazdır
 vowels = "aeuüıioöAEUÜIİOÖ"
 vowelCount = 0
-for letter in firstname:
+for letter in myName:
   if letter in vowels:
     vowelCount += 1
 print(f"Your name has {vowelCount} vowels")

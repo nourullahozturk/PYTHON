@@ -21,10 +21,10 @@ for flight in pflights:
     pTm = tm.replace(":", "h")
 
     # TERNARY OPERATOR VE F-STRİNG KULLANMADAN:
-    start = ""
-    if pInf.startswith("Delayed"):
-        start = "X "
+    # start = ""
+    # if pInf.startswith("Delayed"):
+    #     start = "X "
 
-    output = start + pInf + " from " + pFrm + " to " + pTo + \
-        " (" + pTm + ")"
-    print(output)
+    # output = start + pInf + " from " + pFrm + " to " + pTo + \
+    #     " (" + pTm + ")"
+    # print(output)

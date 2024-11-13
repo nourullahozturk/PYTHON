@@ -12,3 +12,20 @@ print("İki sayı gir, aralarındaki ilişkiyi söyleyeyim.")
 # eğer sayı1 sayı2 den büyük veya eşit ise "sayı1, sayı2 den büyük veya eşittir" yazdır
 
 # İpucu: kullancıdan input() fonksiyonu ile girdi alabilirsiniz
+
+number1 = int(input("İlk sayıyı giriniz: "))
+number2 = int(input("İkinci sayıyı giriniz: "))
+
+if number1 == number2:
+    # print(str(number1) + ", " + str(number2) + "'e eşittir.")
+    print(f"{number1}, {number2}'e eşittir.")
+if number1 != number2:
+    print(str(number1) + ", " + str(number2) + "'e eşit değildir.")
+if number1 > number2:
+    print(str(number1) + ", " + str(number2) + "'den büyüktür.")
+if number1 < number2:
+    print(str(number1) + ", " + str(number2) + "'den küçüktür.")
+if number1 >= number2:
+    print(str(number1) + ", " + str(number2) + "'den büyük veya ona eşittir.")
+if number1 <= number2:
+    print(str(number1) + ", " + str(number2) + "'den küçük veya ona eşittir.")

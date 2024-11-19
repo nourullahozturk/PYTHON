@@ -16,5 +16,5 @@ while grade != -1:
     grade_counter += 1
     grade = int(input("Enter grade, -1 to end: "))
 
-if grade_counter != 0:  # ilk girdi -1 durumunda
+if grade_counter != 0:  # ilk girdi -1 olduğu durumda
     print(total / grade_counter)

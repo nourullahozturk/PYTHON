@@ -103,7 +103,10 @@ newlist = []
 
 #################################################
 
-#...
+# list comprehension kullanmadan:
+
+# list comprehension kullanarak:
+
 
 #################################################
 
@@ -139,7 +142,7 @@ thislist = ["banana", "Orange", "Kiwi", "cherry"]
 thislist.sort(key = str.lower)
 print(thislist)
 
-# listenin elemanlarını tersine sırala. alfabeden bağımsız.
+# listenin elemanlarını tersine çevir.
 thislist = ["banana", "Orange", 15, "Kiwi", "cherry", 3]
 thislist.reverse()
 print(thislist)
@@ -150,26 +153,44 @@ print("thislist[::-1] ", thislist[::-1])
 mystr = "Hello, World!"
 print(mystr[1:7:2])
 
-mylist = [1,2,3,4,6,7,8]
+mylist = [1,2,3,4,5,6,7,8]
 print(mylist[-6:-1:2])
 
-mytuple = (1,2,3,4,5,6,7)
-print(mytuple[-4:-1:2])
+mytuple = ("a","b","c","d","e","f","g","h")
+# d ve f'yi al
+print(mytuple[3:6:2])
+print(mytuple[-5:-2:2])
 
 print(mystr[::])
 print(mystr[::-1])
 print(mystr[::1])
-print(list(range(5, -1, -1)))
+# 3 parametreli range
+print(list(range(5, -1, -1))) # burdaki -1 sondan 1.eleman demek değil. sayı doğrusundaki -1
 
-# list kopyalama
-
-# Çoğu dilde, primitive ve reference type ayrımı vardır. Primitive
-# hafızada obje olarak tutulmayan, bir classtan türetilmemiş
-# türlere denir.
+# Reference Types
 
 # In Python, all values are objects. That means all the types
-# are reference types. Objeler değişkenlere atandığında aslında
-# değişkene bir pointer(objeye işaret eden) atanır. 
+# are reference types.
+
+# Python'da bütün değerler bir objedir.
+# list, number, string, bool vs hepsi birer objedir.
+# objeler değişkenlere atandığında objenin kendisi
+# değişkene atanmaz. O objeye işaret eden bir pointer
+# değişkene atanır.
+# 
+# Örneğin:
+#################################################
+
+thislist = [1, 2, 3, 4]
+print(thislist)
+
+list4 = thislist
+
+list4.append(5)
+print(thislist)
+
+#################################################
+
 # Yalnız, bu davranış aşağıdaki basit türler için geçerli değildir: 
 
 # Numeric 
@@ -177,14 +198,17 @@ print(list(range(5, -1, -1)))
 # Boolean
 # Null and None
 
-# Yukarıdaki türler hariç diğer türleri bir değişkene koyduğunuzda
-# aslında değişkene bu objelerin bir pointerı koyulur.
+# Yukarıdaki türler obje olsalar da performans gerekçeleri
+# nedeniyle pointerları atanmaz, kendileri atanır.
 
-#################################################
+x = 5
+print(x)
+y = x
+y += 1
+print(x)
 
-#...
 
-#################################################
+# list kopyalama
 
 # copy() metodu ile kopyalama
 mylist = thislist.copy()
@@ -196,7 +220,7 @@ print(mylist2)
 mylist3 = thislist[:]
 print(mylist3)
 
-# join lists
+# listeleri birleştirme
 list1 = ["a", "b", "c"]
 list2 = [1, 2, 3]
 

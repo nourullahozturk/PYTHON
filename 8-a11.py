@@ -26,3 +26,52 @@
 
 # sonucu hesapla
 # sonucu göster (win/loss/tie) ve skor değişkenlerini güncelle
+
+import sys, random
+
+wins = 0
+losses = 0
+ties = 0
+moves = ("r", "p", "s")
+while True:   # game loop
+  print(f"{wins} Wins, {losses} Losses, {ties} Ties")
+  print("Enter your move: (r)ock (p)aper (s)cissors or (q)uit")
+
+  while True:   # player input loop
+    playerMove = input()
+    if playerMove == "r":
+      print("ROCK versus...")
+      break
+    elif playerMove == "p":
+      print("PAPER versus...")
+      break
+    elif playerMove == "s":
+      print("SCISSORS versus...")
+      break
+    elif playerMove == "q":
+      print("Goodbye!")
+      sys.exit()
+    else:
+      print("Type one of r, p, s, or q.")
+  
+  # Bilgisayarın hamlesini ekrana yazdır
+  computerMove = random.choice(moves)
+  if computerMove == "r":
+    print("ROCK")
+  if computerMove == "p":
+    print("PAPER")
+  if computerMove == "s":
+    print("SCISSORS")
+  
+  # Sonucu ekrana yazdır ve skorları güncelle
+  if playerMove == computerMove:
+    print("It's Tie!")
+    ties += 1
+  elif (playerMove == "r" and computerMove == "s") or \
+       (playerMove == "p" and computerMove == "r") or \
+       (playerMove == "s" and computerMove == "p"):
+    print("You win!")
+    wins += 1
+  else:
+    print("You lose!")
+    losses += 1

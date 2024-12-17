@@ -42,25 +42,35 @@ fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
 newlist = []
 
 #################################################
+print(fruits)
 
 # list comprehension kullanmadan:
-
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)
+print(newlist)
 
 # list comprehension kullanarak:
-
+newlist = [x for x in fruits if "a" in x]
+print(newlist)
 
 # içerisinde a olan elemanları al yeni bir listeye koy
 # bu elemanlardan içerisinde n olan varsa sonuna ! koy
-
+newlist = [x+"!" if "n" in x else x for x in fruits if "a" in x]
 
 # içerisinde a olan elemanları al yeni bir listeye koy bu elemanlardan
 # içerisinde n olan varsa sonuna ! koy, içinde g olan varsa sonuna ? koy
+for x in fruits:
+  if "a" in x:
+    if "n" in x:
+      newlist.append(x+"!")
+    else:
+      if "g" in x:
+        newlist.append(x+"?")
+      else:
+        newlist.append(x)
 
-
-# newlist'in her bir elemanı için;
-# eğer elemanın sonunda "!" karakteri varsa bu karakteri kaldır.
-# eğer elemanın sonunda "!" karakteri yoksa sonuna "?" ekle.
-# mevcut listeyi güncelle.
+newlist = [x+"!" if "n" in x else x+"?" if "g" in x else x for x in fruits if "a" in x]
 
 
 #################################################
@@ -79,8 +89,14 @@ newlist = []
 
 # Örneğin:
 #################################################
+thislist = [1, 2, 3, 4]
+print(hex(id(thislist)), thislist)
 
+list2 = thislist # güya kopyaladık
 
+list2.append(5)
+print("list2:", hex(id(list2)) , list2)
+print("thislist:", hex(id(thislist)), thislist)
 
 #################################################
 
@@ -91,6 +107,24 @@ newlist = []
 # Boolean
 # Null and None
 
+x = 5
+print("x:", hex(id(x)), x)
+y = x
+print("y:", hex(id(y)), y)
+y += 1
+print("y:", hex(id(y)), y)
+print("x:", hex(id(x)), x)
+
+# Basit türler haricindeki veri türlerini kopyalamak
+# istediğimiz zaman dikkatli olacağız. copy() metodu veya diğer
+# yöntemleri kullanacağız.
+
+# liste kopyalama
+
+mylist = thislist.copy()
+mylist = list(thislist)
+mylist = thislist[:]
+mylist = [x for x in thislist]
 
 
 ###################################################################
@@ -99,17 +133,35 @@ newlist = []
 # Diğer diziler eleman olarak tek bir değer tutarken Sözlükler anahtar:değer ikilisi
 # tutar.
 # JSON dosyalarındaki anahtar:değer içeren verileri program içerisinde tutmak için kullanışlıdır. 
-
+record = {
+  "id": 1,
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "age": 30
+}
+print(record["age"])
+print(record["name"])
+print(record["email"])
+# print(record["xyz"])
+record["city"] = "New York"
+print(record)
+record["city"] = "Los Angelos"
+print(record)
 
 # Bir dizideki elemanların sıklığını(frekansını) bulmak için idealdir.
 elements = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+frequency = {}
+for item in elements:
+  # .get metodu: item anahtarının sözlükteki değerini al, öyle bir anahtar yoksa 0 döndür.
+  frequency[item] = frequency.get(item, 0) + 1
 
-
+print(frequency)
 ###################################################################
 
 # Tuples
 # Değiştirilemez (sabit) verileri tutmak için kullanırız.
-
+days = ("pzt", "sal", "çar", "per", "cum", "cmt", "pzr")
+# days[0] = "mon"
 
 # Ayrıca tupleları dictionary içerisinde key olarak kullanabiliriz. Liste ile bu mümkün değildir.
 locations = {
@@ -120,17 +172,41 @@ locations = {
   ("Brugelette", "Belgium"): "Pairi Daiza",
 }
 
+print(locations[("Paris", "France")])
+
 ###################################################################
 
 # Sets
 # unique verileri gruplamak için kullanırız. sıra önemli değildir.
+student_id = {112, 114, 116, 118, 115}
+# print(student_id[0])
 
+vowel_letters = {"a", "e", "o", "u", "i"}
+vowelCount = 0
+for letter in "jonas":
+  if letter in vowel_letters:
+    vowelCount += 1
 
 # Setleri bir listedeki duplikasyonları kaldırmak için kullanabiliriz
-
+my_list = [1, 2, 2, 3, 4, 4, 5]
+my_set = set(my_list)
+my_list = list(my_set)
+print(my_list)
 
 # Setler üzerinde birleşim, kesişim, fark işlemleri uygulayabiliriz.
+set1 = {1, 2, 3, 4}
+set2 = {3, 4, 5, 6}
 
+new_set = set1.union(set2)
+print(new_set)
+new_set = set1.intersection(set2)
+print(new_set)
+new_set = set1.difference(set2)
+print(new_set)
 
 # Bir elemanın bir dizideki mevcutluğunu kontrol etmenin en verimli
 # yolu Set kullanmaktır. (due to their underlying hash table implementation)
+prohibited_items = {"knife", "gun", "drug"}
+item = "knife"
+if item in prohibited_items:
+  print(f"{item} is prohibited")
